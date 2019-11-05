@@ -1,0 +1,5 @@
+1, 1, Jabon, 0.50
+3, 1, Agua, 0.6
+4, 1, Coca Cola, 2.5
+1, 2, Cafe, 5
+1, 3, Esfero, 0.35
