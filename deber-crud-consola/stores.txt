@@ -1,0 +1,4 @@
+3, Supermaxi, Av. La Gasca
+2, Emprovit, Sucre
+1, San Francisco, Fernandez de Recalde
+4, MegaMaxi, CC el Recreo
