@@ -86,9 +86,8 @@ class Product(Controller):
                 toReturn.append(Product(value[0], value[1], value[2], value [3]))
             toReturn = self.filter(toReturn, store)
         else:
-            for value in result:
-                if(value[1] == store):
-                    toReturn = Product(value[0], value[1], value[2], value [3])
+            if(result[1] == store):
+                toReturn = Product(result[0], result[1], result[2], result[3])
         return toReturn
     
     def filter(self, products_list, store):
@@ -112,7 +111,6 @@ def max_id(items):
 
 option = 0
 stores_list = Store().select("")
-print(stores_list)
 
 while(option != "5"):
     print("Bienvenido al sistema")
