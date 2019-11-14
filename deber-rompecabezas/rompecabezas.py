@@ -20,23 +20,25 @@ def generatePuzzle(pieces):
     divisionY = getMinPrime(int(pieces), 2)
     divisionX = int(int(pieces) / divisionY)
     vertical_slices = np.split(goal, divisionY)
+    np.random.shuffle(vertical_slices)
     handler = 0
-    pieces_slices = np.empty([int(pieces), int(goal.shape[0] / divisionY), int(goal.shape[1] / divisionX), 3])
+    pieces_slices = np.zeros([int(pieces), int(goal.shape[0] / divisionY), int(goal.shape[1] / divisionX), 3], dtype=int)
     for slice in vertical_slices:
         horizontal_slices = np.hsplit(slice, divisionX)
         for h_slice in horizontal_slices:
             pieces_slices[handler] = h_slice
             handler += 1
     np.random.shuffle(pieces_slices)
-    puzzle_1 = pieces_slices[0]
-    for i in range(1,divisionX):
-        puzzle_1 = np.concatenate((puzzle_1, pieces_slices[i]),1)
-    puzzle_2 = pieces_slices[divisionX]
-    for i in range(divisionX + 1, int(pieces)):
-        puzzle_2 = np.concatenate((puzzle_2, pieces_slices[i]),1)
-    puzzle = np.concatenate((puzzle_1, puzzle_2), 0)
-    return puzzle
+    return rebuildPuzzle(pieces_slices)
 
+def rebuildPuzzle(pieces_slices):
+    divisionY = getMinPrime(pieces_slices.shape[0], 2)
+    divisionX = int(int(pieces) / divisionY)
+    puzzle = np.zeros([divisionY, int(goal.shape[0] / divisionY), goal.shape[1], 3], dtype=int)
+    for i in range(1, divisionY + 1):
+        puzzle[i - 1] = np.concatenate(pieces_slices[(i -1) * divisionX: i * divisionX], 1)
+    puzzle_final = np.concatenate(puzzle, 0)
+    return puzzle_final
 
 pieces = input("Ingrese el número de piezas: ")
 
