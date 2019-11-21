@@ -18,8 +18,8 @@ def getMinPrime(number, factor):
 def isCompleted(puzzle):
     return np.array_equal(goal, puzzle)
 
-def cutPuzzle():
-    vertical_slices = np.split(goal, divisionY)
+def cutPuzzle(toCut):
+    vertical_slices = np.split(toCut, divisionY)
     handler = 0
     pieces_slices = np.zeros([int(pieces), int(goal.shape[0] / divisionY), int(goal.shape[1] / divisionX), 3], dtype=int)
     for slice in vertical_slices:
@@ -34,7 +34,7 @@ def generatePuzzle(pieces):
     global divisionY
     divisionY = getMinPrime(int(pieces), 2)
     divisionX = int(int(pieces) / divisionY)
-    pieces_slices = cutPuzzle()
+    pieces_slices = cutPuzzle(goal)
     np.random.shuffle(pieces_slices)
     return rebuildPuzzle(pieces_slices)
 
@@ -62,8 +62,17 @@ def movement_menu():
     return int(input("Seleccione una opción: "))
 
 def movement(piece, order):
-    puzzle = cutPuzzle()
-    showPuzzle()
+    actual_puzzle = cutPuzzle(puzzle)
+    if(order == 1):
+        toMove = (piece - divisionX) % int(pieces)
+    elif(order == 2):
+        toMove = (piece + divisionX) % int(pieces)
+    elif(order == 3):
+        toMove = (piece - 1) % int(pieces)
+    else:
+        toMove = (piece + 1) % int(pieces)
+    actual_puzzle[[toMove, piece]] = actual_puzzle[[piece,toMove]] 
+    return rebuildPuzzle(actual_puzzle)
 
 
 pieces = input("Ingrese el número de piezas: ")
@@ -74,5 +83,6 @@ while(not isCompleted(puzzle)):
     showPuzzle()
     selected_piece = input(f"Seleccione una pieza [1 - {pieces}]: ")
     selected_movement = movement_menu()
-    movement(selected_piece, selected_movement)
-    puzzle = goal
+    puzzle = movement(int(selected_piece) - 1, selected_movement)
+
+showPuzzle()
