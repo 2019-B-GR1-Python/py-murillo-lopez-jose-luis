@@ -129,6 +129,22 @@ ciudades_uno.sort_values(ascending = False).head(2)
 
 ciudades_uno.sort_values(ascending = False).tail(2)
 
+#MAP
+def calculo(valor):
+    if(valor <= 1000):
+        return valor * 1.05
+    elif(valor > 1000 and valor <= 5000):
+        return valor * 1.1
+    elif(valor > 5000):
+        return valor * 1.15
+
+ciudades_uno.map(calculo)
+
+ciudades_uno.where(ciudades_uno < 1000, ciudades_uno * 1.05)
+
+
+
+
 
 
 
