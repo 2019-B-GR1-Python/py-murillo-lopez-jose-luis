@@ -83,6 +83,17 @@ hoja_artistas.insert_chart('D2', chart)
 
 writer.save()
 
+#SQL
 
+with sqlite3.connect("D://Documents//GitHub//py-murillo-lopez-jose-luis//03-pandas//bdd_artist.db") as conexion:
+    df5.to_sql('py_artistas', conexion)    
+
+##MySQL
+#with mysql.connect('mysql://user:password@ip:puerto/nombre?base') as conexion:
+#    df5.to_sql('tabla_mysql', conexion)
+    
+#JSON
+    
+df5.to_json("D://Documents//GitHub//py-murillo-lopez-jose-luis//03-pandas//data//artist.json", orient='table')
 
 
