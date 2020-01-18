@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*Busqueda por ID*/
+        #titulo-uno{
+            background-color: red;
+        }
+        /*Búsqueda por nombre de la etiqueta*/
+        p{
+            color: white;
+            background-color: black;
+        }
+        body{
+            background-color: orange;
+        }
+        /*Búsqueda por clases*/
+        .texto-amarillo{
+            color: yellow;
+        }
+        .fondo-verde{
+            background-color: green;
+        }
+        .texto-cafe{
+            color: brown;
+        }
+        .texto-azul{
+            color: blue;
+        }
+
+        li > p{
+            background-color: coral;
+            color: darkgray;
+        }
+
+        li > p.texto-amarillo{
+            color: goldenrod;
+        }
+        p.texto-azul.texto-amarillo.texto-cafe.texto-blanco{
+            color: pink;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="texto-amarillo">Título</h1>
+    <p 
+        class="fondo-verde"
+        style="background-color: indigo";
+        id="titulo-uno">
+        Mi mamá</p>
+    <p
+        class="texto-amarillo texto-azul texto-cafe">
+        me mima</p
+        >
+    <style>
+        .texto-blanco{
+            color: white;
+        }
+    </style>
+    <ul>
+        <li><p class="texto-amarillo">item 1</p></li>
+        <li><p class="texto-amarillo texto-azul texto-cafe texto-blanco">item 2</p></li>
+        <li><p>item 3</p></li>
+    </ul>
+</body>
+</html>
