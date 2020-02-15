@@ -41,5 +41,15 @@ class AraniaFybeca(scrapy.Spider):
                     'div[contains(@class,"detail")]/a[contains(@class,"image")]/img[contains(@id,"gImg")]/@src'
                 )
 
+                producto_loader.add_css(
+                    'precio_VC',
+                    'div.price-member > div::attr(data-bind)'
+                )
+
+                producto_loader.add_css(
+                    'precio_normal',
+                    'div.price::attr(data-bind)'
+                )
+
                 yield producto_loader.load_item()
 

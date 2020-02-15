@@ -21,7 +21,10 @@ class TransformarTituloMinusculas(object):
         item['titulo'] = titulo.lower()
         return item
 
-
+class CalcularAhorroVC(object):
+    def process_item(self, item, spider):
+        item['ahorro'] = item['precio_normal'] - item['precio_VC']
+        return item
 
 class AraniaFibecaPipeline(object):
     def process_item(self, item, spider):

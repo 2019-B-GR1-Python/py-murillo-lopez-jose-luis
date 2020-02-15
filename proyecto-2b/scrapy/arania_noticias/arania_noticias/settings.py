@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for arania_fibeca project
+# Scrapy settings for arania_noticias project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'arania_fibeca'
+BOT_NAME = 'arania_noticias'
 
-SPIDER_MODULES = ['arania_fibeca.spiders']
-NEWSPIDER_MODULE = 'arania_fibeca.spiders'
+SPIDER_MODULES = ['arania_noticias.spiders']
+NEWSPIDER_MODULE = 'arania_noticias.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'arania_fibeca (+http://www.yourdomain.com)'
+#USER_AGENT = 'arania_noticias (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'arania_fibeca.middlewares.AraniaFibecaSpiderMiddleware': 543,
+#    'arania_noticias.middlewares.AraniaNoticiasSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'arania_fibeca.middlewares.AraniaFibecaDownloaderMiddleware': 543,
+#    'arania_noticias.middlewares.AraniaNoticiasDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -64,13 +64,13 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'arania_fibeca.pipelines.CalcularAhorroVC' : 200,
-   'arania_fibeca.pipelines.AraniaFibecaPipeline': 300,
+ITEM_PIPELINES = { 
+    'arania_noticias.pipelines.FillingFieldssPipeline': 200,
+    'arania_noticias.pipelines.AraniaNoticiasPipeline': 300
 }
 
-FEED_FORMAT = 'json'
-FEED_URI = 'tmp/productos-fybeca.json'
+FEED_FORMAT = 'csv'
+FEED_URI = 'tmp/comercio-news.csv'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
